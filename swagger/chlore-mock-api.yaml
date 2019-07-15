@@ -1,0 +1,1937 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a user service api definition"
+  version: "0.0.1"
+  title: "Chrole Service"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+schemes:
+- "http"
+paths:
+  /users:
+    get:
+      tags:
+      - "user"
+      summary: "Get User"
+      operationId: "getUser"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "User"
+    post:
+      tags:
+      - "user"
+      summary: "Create User"
+      operationId: "createUser"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Edited User object"
+        required: true
+        schema:
+          $ref: "#/definitions/PostUser"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        400:
+          description: "Invalid comment supplied"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/400Response"
+        404:
+          description: "Comment not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "User"
+  /user/{user_id}:
+    get:
+      tags:
+      - "user"
+      summary: "Get User By UserID"
+      operationId: "getUserByUserID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "user_id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "User"
+    put:
+      tags:
+      - "user"
+      summary: "Edit User"
+      operationId: "editUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "user_id"
+        in: "path"
+        description: "user_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Edited User object"
+        required: true
+        schema:
+          $ref: "#/definitions/PutUser"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "User not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Comment"
+    delete:
+      tags:
+      - "user"
+      summary: "delete User"
+      operationId: "DeleteUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "user_id"
+        in: "path"
+        description: "user_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "User not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "User"
+  /brands:
+    get:
+      tags:
+      - "brand"
+      summary: "Get Brand"
+      operationId: "getBrand"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Brand"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "Brand"
+    post:
+      tags:
+      - "brand"
+      summary: "Create Brand"
+      operationId: "createBrand"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created Brand object"
+        required: true
+        schema:
+          $ref: "#/definitions/PostBrand"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        400:
+          description: "Invalid comment supplied"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/400Response"
+        404:
+          description: "Comment not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Brand"
+  /brands/{brand_id}:
+    get:
+      tags:
+      - "brand"
+      summary: "Get Brand By BrandID"
+      operationId: "getBrandByBrandID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "brand_id"
+        in: "path"
+        description: "brand_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Brand"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "Brand"
+    put:
+      tags:
+      - "brand"
+      summary: "Edit Brand"
+      operationId: "editBrand"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "brand_id"
+        in: "path"
+        description: "brand_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Edited Brand object"
+        required: true
+        schema:
+          $ref: "#/definitions/PutBrand"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "Brnad not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Brand"
+    delete:
+      tags:
+      - "brand"
+      summary: "Delete Brand"
+      operationId: "deleteBrand"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "brand_id"
+        in: "path"
+        description: "brand_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "Brand not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Brnad"
+  /products:
+    get:
+      tags:
+      - "product"
+      summary: "Get Product"
+      operationId: "getProduct"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Product"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "Product"
+    post:
+      tags:
+      - "product"
+      summary: "Create Product"
+      operationId: "createProduct"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created Product object"
+        required: true
+        schema:
+          $ref: "#/definitions/PostProduct"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        400:
+          description: "Invalid comment supplied"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/400Response"
+        404:
+          description: "Comment not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Brand"
+  /products/{product_id}:
+    get:
+      tags:
+      - "product"
+      summary: "Get Product By ProductID"
+      operationId: "getProductByProductID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "product_id"
+        in: "path"
+        description: "product_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Product"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "Product"
+    put:
+      tags:
+      - "product"
+      summary: "Edit Product"
+      operationId: "editProduct"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "product_id"
+        in: "path"
+        description: "product_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Edited Product object"
+        required: true
+        schema:
+          $ref: "#/definitions/PutProduct"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "Product not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Product"
+    delete:
+      tags:
+      - "product"
+      summary: "Delete Product"
+      operationId: "deleteProduct"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "product_id"
+        in: "path"
+        description: "product_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "Product not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Product"
+  /items:
+    get:
+      tags:
+      - "item"
+      summary: "Get Item"
+      operationId: "getItem"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        description: "id in query"
+        required: false
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Item"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "Item"
+    post:
+      tags:
+      - "item"
+      summary: "Create Item"
+      operationId: "createItem"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created Item object"
+        required: true
+        schema:
+          $ref: "#/definitions/PostItem"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        400:
+          description: "Invalid item supplied"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/400Response"
+        404:
+          description: "Item not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Item"
+  /items/{item_id}:
+    get:
+      tags:
+      - "item"
+      summary: "Get Item By ItemID"
+      operationId: "getItemByItemID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Item"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "Item"
+    put:
+      tags:
+      - "item"
+      summary: "Edit Item"
+      operationId: "editItem"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Edited Item object"
+        required: true
+        schema:
+          $ref: "#/definitions/PutItem"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "Item not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Item"
+    delete:
+      tags:
+      - "item"
+      summary: "Delete Item"
+      operationId: "deleteItem"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "Item not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Item"
+
+  /item/{item_id}/reviews:
+    get:
+      tags:
+      - "review"
+      summary: "Get Review By ItemID"
+      operationId: "getReView"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Review"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "Review"
+    post:
+      tags:
+      - "review"
+      summary: "Create Review"
+      operationId: "createReview"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Created Review object"
+        required: true
+        schema:
+          $ref: "#/definitions/PostReview"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        400:
+          description: "Invalid review supplied"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/400Response"
+        404:
+          description: "Review not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Review"
+      
+  /item/{item_id}/reviews/{review_id}:
+    get:
+      tags:
+      - "review"
+      summary: "Get Review By ReviewID"
+      operationId: "getReviewByReviewID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "review_id"
+        in: "path"
+        description: "review_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Review"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "Review"
+    put:
+      tags:
+      - "review"
+      summary: "Edit Review"
+      operationId: "editReview"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "review_id"
+        in: "path"
+        description: "review_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Edited Review object"
+        required: true
+        schema:
+          $ref: "#/definitions/PutReview"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "Review not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Review"
+    delete:
+      tags:
+      - "review"
+      summary: "Delete Review"
+      operationId: "deleteReview"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "review_id"
+        in: "path"
+        description: "review_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "Review not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Review"
+  /item/{item_id}/wants:
+    get:
+      tags:
+      - "want"
+      summary: "Get want By ItemID"
+      operationId: "getWant"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "user_id"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Want"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "Want"
+    post:
+      tags:
+      - "want"
+      summary: "Create Want"
+      operationId: "createWant"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Created want object"
+        required: true
+        schema:
+          $ref: "#/definitions/PostWant"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        400:
+          description: "Invalid comment supplied"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/400Response"
+        404:
+          description: "want not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Want"
+  /item/{item_id}/wants/{want_id}:
+    get:
+      tags:
+      - "want"
+      summary: "Get Want By WantID"
+      operationId: "getWantByWantID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "want_id"
+        in: "path"
+        description: "want_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Want"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "Want"
+    put:
+      tags:
+      - "want"
+      summary: "Edit Want"
+      operationId: "editWant"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "want_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "want_id"
+        in: "path"
+        description: "want_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Edited Want object"
+        required: true
+        schema:
+          $ref: "#/definitions/PutWant"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "Want not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Want"
+    delete:
+      tags:
+      - "want"
+      summary: "Delete want"
+      operationId: "DeletewantBywantID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "want_id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "want not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Want"
+  /item/{item_id}/picks:
+    get:
+      tags:
+      - "pick"
+      summary: "Get Pick By ItemID"
+      operationId: "getPick"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "user_id"
+        in: "query"
+        required: false
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Pick"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "Pick"
+    post:
+      tags:
+      - "pick"
+      summary: "Create Pick"
+      operationId: "createPick"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Created Pick object"
+        required: true
+        schema:
+          $ref: "#/definitions/PostPick"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        400:
+          description: "Invalid comment supplied"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/400Response"
+        404:
+          description: "Comment not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Pick"
+  /item/{item_id}/picks/{pick_id}:
+    get:
+      tags:
+      - "pick"
+      summary: "Get Pick By PickID"
+      operationId: "getPickByPickID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "pick_id"
+        in: "path"
+        description: "pick_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Pick"
+        500:
+          description: "internal server error"
+      x-swagger-router-controller: "Pick"
+    put:
+      tags:
+      - "pick"
+      summary: "Edit Pick"
+      operationId: "editPick"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "want_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "pick_id"
+        in: "path"
+        description: "pick_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Edited Pick object"
+        required: true
+        schema:
+          $ref: "#/definitions/PutPick"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "Pick not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Pick"
+    delete:
+      tags:
+      - "pick"
+      summary: "Delete want"
+      operationId: "deletewantBy"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item_id"
+        in: "path"
+        description: "item_id in path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "pick_id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/200Response"
+        404:
+          description: "Pick not found"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/404Response"
+      x-swagger-router-controller: "Pick"
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      image:
+        type: "string"
+      pc_type_1:
+        type: "string"
+      pc_type_2:
+        type: "string"
+      birthday:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      deleted_at:
+        type: "string"
+        format: "date-time"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+      pick:
+        type: "object"
+        properties: 
+          id:
+            type: "integer"
+            format: "int64"
+          user_id:
+            type: "integer"
+            format: "int64"
+          item_id:
+            type: "integer"
+            format: "int64"
+          deleted_at:
+            type: "string"
+            format: "date-time"
+          created_at:
+            type: "string"
+            format: "date-time"
+          updated_at:
+            type: "string"
+            format: "date-time"
+      want:
+        type: "object"
+        properties:
+          id:
+            type: "integer"
+            format: "int64"
+          user_id:
+            type: "integer"
+            format: "int64"
+          item_id:
+            type: "integer"
+            format: "int64"
+          deleted_at:
+            type: "string"
+            format: "date-time"
+          created_at:
+            type: "string"
+            format: "date-time"
+          updated_at:
+            type: "string"
+            format: "date-time"
+    example:
+      id: 1
+      name: "さしこ"
+      image: "http://ur0.biz/S5Js"
+      pc_type_1: "イエベ春"
+      pc_type_2: "ブルベ夏"
+      birthday: "2000-01-23T04:56:07.000+00:00"
+      email: "chrole@gmail.com"
+      password: "password"
+      deleted_at: ""
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+      pick:
+        - id: 1
+          user_id: 1
+          item_id: 1
+          deleted_at: ""
+          created_at: "2000-01-23T04:56:07.000+00:00"
+          updated_at: "2000-01-23T04:56:07.000+00:00"
+      want:
+        - id: 1
+          user_id: 1
+          item_id: 1
+          deleted_at: ""
+          created_at: "2000-01-23T04:56:07.000+00:00"
+          updated_at: "2000-01-23T04:56:07.000+00:00"
+          
+  PostUser:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      image:
+        type: "string"
+      pc_type_1:
+        type: "string"
+      pc_type_2:
+        type: "string"
+      birthday:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      name: "さしこ"
+      image: "http://ur0.biz/S5Js"
+      pc_type_1: "イエベ春"
+      pc_type_2: "ブルベ夏"
+      birthday: "2000-01-23T04:56:07.000+00:00"
+      email: "chrole@gmail.com"
+      password: "password"
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  PutUser:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      image:
+        type: "string"
+      pc_type_1:
+        type: "string"
+      pc_type_2:
+        type: "string"
+      birthday:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      deleted_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      id: 1
+      name: "さしこ"
+      image: "http://ur0.biz/S5Js"
+      pc_type_1: "イエベ春"
+      pc_type_2: "ブルベ夏"
+      birthday: "2000-01-23T04:56:07.000+00:00"
+      email: "chrole@gmail.com"
+      password: "password"
+      deleted_id: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  Brand:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      image:
+        type: "string"
+      status:
+        type: "integer"
+        format: "int64"
+      deleted_at:
+        type: "string"
+        format: "date-time"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      id: 1
+      name: "CANMAKE"
+      image: "http://ur0.biz/TRPq"
+      status: 0
+      deleted_at: ""
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  PostBrand:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      image:
+        type: "string"
+      status:
+        type: "integer"
+        format: "int64"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      name: "CANMAKE"
+      image: "http://ur0.biz/TRPq"
+      status: 0
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  PutBrand:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      image:
+        type: "string"
+      status:
+        type: "integer"
+        format: "int64"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      id: 1
+      name: "CANMAKE"
+      image: "http://ur0.biz/TRPq"
+      status: 0
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  Product:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      brand_id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      price:
+        type: "string"
+      status:
+        type: "integer"
+        format: "int64"
+      deleted_at:
+        type: "string"
+        format: "date-time"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+      reviews:
+        type: "object"
+        properties:
+          stayling:
+            type: "number"
+            format: "float"
+          moisture:
+            type: "number"
+            format: "float"  
+          soft:
+            type: "number"
+            format: "float"  
+          brightly:
+            type: "number"
+            format: "float"  
+          deleted_at:
+            type: "string"
+            format: "date-time"
+          created_at:
+            type: "string"
+            format: "date-time"
+          updated_at:
+            type: "string"
+            format: "date-time"
+    example:
+      id: 1
+      name: "パーフェクトスタイリストアイズ"
+      product_id: 1
+      brand_id: 1
+      image: "http://ur0.biz/Jwpe"
+      status: 0
+      deleted_at: ""
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+      reviews:
+        - stayling: 1.5
+          moisture: 1.5
+          soft: 1.5
+          brightly: 1.5
+          deleted_at: ""
+          created_at: "2000-01-23T04:56:07.000+00:00"
+          updated_at: "2000-01-23T04:56:07.000+00:00"
+          
+  PostProduct:
+    type: "object"
+    properties:
+      brand_id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      price:
+        type: "string"
+      status:
+        type: "integer"
+        format: "int64"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      name: "パーフェクトスタイリストアイズ"
+      brand_id: 1
+      image: "http://ur0.biz/Jwpe"
+      status: 0
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  PutProduct:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      brand_id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      price:
+        type: "string"
+      status:
+        type: "integer"
+        format: "int64"
+      deleted_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      id: 1
+      name: "パーフェクトスタイリストアイズ"
+      product_id: 1
+      brand_id: 1
+      image: "http://ur0.biz/Jwpe"
+      status: 0
+      deleted_at: ""
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  Item:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      number:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      image:
+        type: "string"
+      product_id:
+        type: "integer"
+        format: "int64"
+      pc_type:
+        type: "string"
+      texture:
+        type: "integer"
+        format: "int64"
+      status:
+        type: "integer"
+        format: "int64"
+      deleted_at:
+        type: "string"
+        format: "date-time"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      id: 1
+      number: 1
+      name: "アンティークルビー"
+      product_id: 1
+      image: "http://ur0.biz/rEQv"
+      texture: 1
+      deleted_at: ""
+      status: 0
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+
+  PostItem:
+    type: "object"
+    properties:
+      number:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      product_id:
+        type: "integer"
+        format: "int64"
+      image:
+        type: "string"
+      texture:
+        type: "integer"
+        format: "int64"
+      status:
+        type: "integer"
+        format: "int64"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      number: 1
+      name: "アンティークルビー"
+      product_id: 1
+      pc_id: 1
+      image: "http://ur0.biz/rEQv"
+      texture: 1
+      status: 0
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  PutItem:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      number:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      product_id:
+        type: "integer"
+        format: "int64"
+      image:
+        type: "string"
+      texture:
+        type: "integer"
+        format: "int64"
+      status:
+        type: "integer"
+        format: "int64"
+      deleted_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      id: 1
+      number: 1
+      name: "アンティークルビー"
+      product_id: 1
+      pc_id: 1
+      image: "http://ur0.biz/rEQv"
+      texture: 1
+      deleted_at: ""
+      status: 0
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+
+  Review:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      user_id:
+        type: "integer"
+        format: "int64"
+      product_id:
+        type: "integer"
+        format: "int64"
+      lasting:
+        type: "integer"
+        format: "int64"
+      moisture:
+        type: "number"
+        format: "float"
+      gentle:
+        type: "number"
+        format: "float"
+      brightly:
+        type: "number"
+        format: "float"
+      item_id:
+        type: "integer"
+        format: "int64"
+      body:
+        type: "string"
+      favorite:
+        type: "integer"
+        format: "int64"
+      deleted_at:
+        type: "string"
+        format: "date-time"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      id: 1
+      user_id: 1
+      product_id: 1
+      lasting: 1.5
+      moisture: 1.5
+      gentle: 1.5
+      brightly: 1.5
+      item_id: 1.5
+      body: "イエベ春の私にはピッタリ！"
+      favorite: 1
+      deleted_at: ""
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+
+  PostReview:
+    type: "object"
+    properties:
+      user_id:
+        type: "integer"
+        format: "int64"
+      product_id:
+        type: "integer"
+        format: "int64"
+      lasting:
+        type: "integer"
+        format: "int64"
+      moisture:
+        type: "integer"
+        format: "int64"
+      gentle:
+        type: "integer"
+        format: "int64"
+      brightly:
+        type: "integer"
+        format: "int64"
+      item_id:
+        type: "integer"
+        format: "int64"
+      body:
+        type: "string"
+      favorite:
+        type: "integer"
+        format: "int64"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      id: 1
+      user_id: 1
+      product_id: 1
+      lasting: 1
+      moisture: 1
+      gentle: 1
+      brightly: 1
+      item_id: 1
+      body: "イエベ春の私にはピッタリ！"
+      favorite: 1
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+
+  PutReview:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      user_id:
+        type: "integer"
+        format: "int64"
+      product_id:
+        type: "integer"
+        format: "int64"
+      lasting:
+        type: "integer"
+        format: "int64"
+      moisture:
+        type: "integer"
+        format: "int64"
+      gentle:
+        type: "integer"
+        format: "int64"
+      brightly:
+        type: "integer"
+        format: "int64"
+      item_id:
+        type: "integer"
+        format: "int64"
+      body:
+        type: "string"
+      favorite:
+        type: "integer"
+        format: "int64"
+      deleted_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      id: 1
+      user_id: 1
+      product_id: 1
+      lasting: 1
+      moisture: 1
+      gentle: 1
+      brightly: 1
+      item_id: 1
+      body: "イエベ春の私にはピッタリ！"
+      favorite: 1
+      deleted_at: ""
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+
+  Want:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      user_id:
+        type: "integer"
+        format: "int64"
+      item_id:
+        type: "integer"
+        format: "int64"
+      delete_at:
+        type: "string"
+        format: "date-time"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      id: 1
+      user_id: 1
+      item_id: 1
+      deleted_at: ""
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  PostWant:
+    type: "object"
+    properties:
+      user_id:
+        type: "integer"
+        format: "int64"
+      item_id:
+        type: "integer"
+        format: "int64"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      user_id: 1
+      item_id: 1
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  PutWant:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      user_id:
+        type: "integer"
+        format: "int64"
+      item_id:
+        type: "integer"
+        format: "int64"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      id: 1
+      user_id: 1
+      item_id: 1
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  Pick:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      user_id:
+        type: "integer"
+        format: "int64"
+      item_id:
+        type: "integer"
+        format: "int64"
+      delete_at:
+        type: "string"
+        format: "date-time"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      id: 1
+      user_id: 1
+      item_id: 1
+      deleted_at: ""
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  PostPick:
+    type: "object"
+    properties:
+      user_id:
+        type: "integer"
+        format: "int64"
+      item_id:
+        type: "integer"
+        format: "int64"
+      created_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      user_id: 1
+      item_id: 1
+      created_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  PutPick:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      user_id:
+        type: "integer"
+        format: "int64"
+      item_id:
+        type: "integer"
+        format: "int64"
+      deleted_at:
+        type: "string"
+        format: "date-time"
+      updated_at:
+        type: "string"
+        format: "date-time"
+    example:
+      id: 1
+      user_id: 1
+      item_id: 1
+      deleted_at: "2000-01-23T04:56:07.000+00:00"
+      updated_at: "2000-01-23T04:56:07.000+00:00"
+  200Response:
+    type: "object"
+    properties:
+      statusCode:
+        type: "integer"
+        format: "int32"
+      msg:
+        type: "string"
+    example:
+      statusCode: 200
+      message: "Success"
+  400Response:
+    type: "object"
+    properties:
+      statusCode:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+    example:
+      statusCode: 400
+      message: "Invalid Value supplied"
+  404Response:
+    type: "object"
+    properties:
+      statusCode:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+    example:
+      statusCode: 404
+      message: "Value Not Found"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

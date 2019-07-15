@@ -1,0 +1,19 @@
+// SP幅以下のみスタイル適用
+@mixin sp {
+  @if & {
+    .is-sp-device & {
+      @content;
+    }
+  } @else {
+    .is-sp-device {
+      @content;
+    }
+  }
+}
+
+// SP幅のみ表示
+@mixin only-sp {
+  @include pc {
+    display: none !important;
+  }
+}

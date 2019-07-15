@@ -1,0 +1,17 @@
+{
+  "name":"Chrole",
+  "lang":"ja",
+  "short_name":"Chrole",
+  "icons": [{
+    "src": "images/sample.png",
+      "sizes":"128x128",
+      "type": "image/png"
+    }],
+  "start_url": "/pwa/",
+  "display": "standalone",
+  "background_color": "#EB65E3",
+  "theme_color": "#000",
+  "workbox": {
+    "swDest": "static/sw.js"
+  }
+}
